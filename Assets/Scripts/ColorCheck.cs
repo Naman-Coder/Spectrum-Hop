@@ -24,4 +24,13 @@ public class ColorCheck : MonoBehaviour
             playerRenderer.material = colorMaterials[currentColorIndex];
         }
     }
+
+    private void OnCollisionEnter(Collision other) {
+        if(other.gameObject.layer == 6) {
+            Renderer platformRenderer = other.gameObject.GetComponent<Renderer>();
+            if(platformRenderer.material != playerRenderer.material) {
+                //Game Over
+            }
+        }
+    }
 }
