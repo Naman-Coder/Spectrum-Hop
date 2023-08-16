@@ -8,11 +8,13 @@ public class CameraController : MonoBehaviour
     private Vector3 offset;
     private Vector3 targetPosition;
 
-    private void Start() {
+    private void Start() 
+    {
         offset = transform.position - target.transform.position;
     }
 
-    private void LateUpdate() {
+    private void LateUpdate() 
+    {
         transform.position = target.transform.position + offset;
     }
 }
