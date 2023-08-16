@@ -27,5 +27,9 @@ public class PlatformSpawner : MonoBehaviour
         GameObject platformPrefab = platformPrefabs[randomIndex];
 
         Instantiate(platformPrefab, spawnPoint, Quaternion.identity, transform);
+        foreach (Transform child in transform)
+         {
+            child.gameObject.layer = 6;
+         }
     }
 }
