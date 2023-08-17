@@ -9,9 +9,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody rb;
     private float speed = 1.25f;
     private float jumpForce = 5f; 
-    private float raycastDistance = 1f;
+    private float raycastDistance = 0.5f;
     private bool isGrounded;
-    private bool pressedEnter;
 
     private void FixedUpdate() 
     {
@@ -25,12 +24,9 @@ public class PlayerController : MonoBehaviour
 
     private void ForwardMovement() 
     {
-        if(Input.GetKeyDown(KeyCode.Return))
-            pressedEnter = true;
-        if(pressedEnter) {
-            Vector3 forwardMovement = transform.forward * speed * Time.deltaTime;
-            rb.MovePosition(rb.position + forwardMovement);
-        }
+        Vector3 forwardMovement = transform.forward * speed * Time.deltaTime;
+        rb.MovePosition(rb.position + forwardMovement);
+        
     }
     
     private void GroundCheck()
