@@ -22,6 +22,5 @@ public class UIManager : MonoBehaviour
     {
         gameOver.SetActive(true);
         Time.timeScale = 0;
-        Debug.Log("Game overi des");
     }
 }
