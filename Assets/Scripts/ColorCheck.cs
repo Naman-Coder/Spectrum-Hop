@@ -5,9 +5,12 @@ using UnityEngine;
 public class ColorCheck : MonoBehaviour
 {
     [SerializeField] Material[] colorMaterials; 
-    [SerializeField]private Renderer playerRenderer; 
+    [SerializeField]private MeshRenderer playerRenderer; 
     private float colorChangeInterval = 2f;
     private int currentColorIndex = 0;
+
+    public delegate void ColorMismatch();
+    public static event ColorMismatch OnColorMismatch;
 
     private void Start()
     {
@@ -27,9 +30,9 @@ public class ColorCheck : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
         if(other.gameObject.layer == 6) {
-            Renderer platformRenderer = other.gameObject.GetComponent<Renderer>();
-            if(platformRenderer.material != playerRenderer.material) {
-                //Game Over
+            Renderer platformRenderer = other.gameObject.GetComponent<MeshRenderer>();
+            if(platformRenderer.sharedMaterial != playerRenderer.sharedMaterial) {
+                OnColorMismatch?.Invoke();
             }
         }
     }
