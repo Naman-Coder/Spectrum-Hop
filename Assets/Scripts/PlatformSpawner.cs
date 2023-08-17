@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlatformSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] platformPrefabs;
-    private Vector3 spawnPoint = new (0f, 0f, 1.5f);          
+    private Vector3 spawnPoint = new (0f, 0f, 1f);          
     private float spawnInterval = 0.5f;       
     private float timer = 0f;
 
@@ -16,7 +16,7 @@ public class PlatformSpawner : MonoBehaviour
         if (timer >= spawnInterval)
         {
             SpawnPlatform();
-            spawnPoint += new Vector3(0f, 0f, 1.5f);
+            spawnPoint += new Vector3(0f, 0f, 1f);
             timer = 0f; 
         }
     }
