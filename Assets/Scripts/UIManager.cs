@@ -14,15 +14,15 @@ public class UIManager : MonoBehaviour
         ShowCountDown();    
     }
 
-    // private void OnEnable() 
-    // {
-    //     ColorCheck.OnColorMismatch += ShowGameOver;
-    // }
+    private void OnEnable() 
+    {
+        ColorCheck.OnColorMismatch += ShowGameOver;
+    }
 
-    // private void OnDisable() 
-    // {
-    //     ColorCheck.OnColorMismatch -= ShowGameOver;
-    // }
+    private void OnDisable() 
+    {
+        ColorCheck.OnColorMismatch -= ShowGameOver;
+    }
 
     private void ShowGameOver()
     {
