@@ -6,7 +6,7 @@ using TMPro;
 public class Countdown : MonoBehaviour
 {
     public TextMeshProUGUI countdownText;
-    public float countdownDuration = 3.0f; 
+    public float countdownDuration = 3.0f;          
 
     private void Start()
     {
