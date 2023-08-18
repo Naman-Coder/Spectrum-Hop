@@ -6,15 +6,16 @@ public class ColorCheck : MonoBehaviour
 {
     [SerializeField] Material[] colorMaterials; 
     [SerializeField]private MeshRenderer playerRenderer; 
-    private float colorChangeInterval = 5f;
-    private int currentColorIndex = 0;
+    public float colorChangeInterval = 5f;
+    public int currentColorIndex = 0;
 
     public delegate void ColorMismatch();
     public static event ColorMismatch OnColorMismatch;
 
     private void Start()
     {
-        playerRenderer.material = colorMaterials[Random.Range(0, colorMaterials.Length)]; // Apply a random color when game starts
+        currentColorIndex = Random.Range(0, colorMaterials.Length);
+        playerRenderer.material = colorMaterials[currentColorIndex]; // Apply a random color when game starts
         StartCoroutine(ColorChangeCoroutine()); 
     }
 
