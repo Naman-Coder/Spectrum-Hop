@@ -8,6 +8,9 @@ public class Countdown : MonoBehaviour
     public TextMeshProUGUI countdownText;
     public float countdownDuration = 3.0f;          
 
+    public delegate void GameStarted();
+    public static event GameStarted OnGameStarted;
+
     private void Start()
     {
         Time.timeScale = 0;
@@ -34,8 +37,8 @@ public class Countdown : MonoBehaviour
         yield return new WaitForSecondsRealtime(1f);
 
         gameObject.SetActive(false);
-
         Time.timeScale = 1;
+        OnGameStarted?.Invoke();
     }
 }
 
