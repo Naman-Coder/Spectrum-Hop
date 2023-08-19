@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOver;
     [SerializeField] private GameObject countdown;
+    [SerializeField] private GameObject nextColorCounter;
+
 
     private void Awake() 
     {
@@ -17,11 +19,13 @@ public class UIManager : MonoBehaviour
     private void OnEnable() 
     {
         ColorCheck.OnColorMismatch += ShowGameOver;
+        Countdown.OnGameStarted += ShowNextColorCounter;
     }
 
     private void OnDisable() 
     {
         ColorCheck.OnColorMismatch -= ShowGameOver;
+        Countdown.OnGameStarted -= ShowNextColorCounter;
     }
 
     private void ShowGameOver()
@@ -35,5 +39,9 @@ public class UIManager : MonoBehaviour
         countdown.SetActive(true);
     }
 
+    private void ShowNextColorCounter()
+    {
+        nextColorCounter.SetActive(true);
+    }
 
 }
