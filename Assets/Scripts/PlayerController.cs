@@ -7,11 +7,11 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
+    [SerializeField] private float speed = 2f;
+    [SerializeField] private float jumpForce = 3f;
+    [SerializeField]private int maxJumps = 1; // Max jumps excluding initial jump
 
-    private int maxJumps = 1; // Max jumps excluding initial jump
     private int remainingJumps;
-    private float speed = 1.25f;
-    private float jumpForce = 5f; 
     private bool isGrounded;
     private float distToGround;
 
