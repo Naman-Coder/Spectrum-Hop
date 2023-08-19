@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class ColorCheck : MonoBehaviour
 {
-    [SerializeField] Material[] colorMaterials; 
-    [SerializeField]private MeshRenderer playerRenderer; 
+    [SerializeField] private Material[] colorMaterials; 
+    [SerializeField]private MeshRenderer playerRenderer;
+    [SerializeField] private PlatformSpawner platformSpawner;
+
     public float colorChangeInterval = 5f;
     public int currentColorIndex = 0;
-
     public delegate void ColorMismatch();
     public static event ColorMismatch OnColorMismatch;
 
@@ -30,12 +31,18 @@ public class ColorCheck : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other) {
-        if(other.gameObject.layer == 6) {
+    private void OnCollisionEnter(Collision other) // Spawns platform on collision with platform
+    {
+        if(other.gameObject.layer == 6) 
+        {
             Renderer platformRenderer = other.gameObject.GetComponent<MeshRenderer>();
-            if(platformRenderer.sharedMaterial != playerRenderer.sharedMaterial) {
+            if(platformRenderer.sharedMaterial != playerRenderer.sharedMaterial) 
+            {
                 OnColorMismatch?.Invoke();
             }
         }
+
+        platformSpawner.SpawnPlatform();
+        platformSpawner.SpawnPlatform();
     }
 }
