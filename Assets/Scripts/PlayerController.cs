@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] private float speed = 2f;
     [SerializeField] private float jumpForce = 3f;
-    [SerializeField]private int maxJumps = 1; // Max jumps excluding initial jump
+    [SerializeField] private int maxJumps = 1; // Max jumps excluding initial jump
 
     private int remainingJumps;
     private bool isGrounded;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() 
     {
-        ForwardMovement();
+       ForwardMovement();
     }
 
     private void Update() {
@@ -50,7 +50,6 @@ public class PlayerController : MonoBehaviour
     {
         if ((isGrounded || remainingJumps > 0) && Input.GetButtonDown("Jump"))
         {
-            Debug.Log(isGrounded);
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); // Reset vertical velocity
             
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
@@ -59,8 +58,8 @@ public class PlayerController : MonoBehaviour
             {
                 remainingJumps--;
             }
+        }
     }
-}
 }
 
 
