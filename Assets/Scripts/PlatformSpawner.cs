@@ -12,7 +12,8 @@ public class PlatformSpawner : MonoBehaviour
     private bool isCorrectPlatformSpawned;
          
 
-    private void Start() {
+    private void Start() 
+    {
         
     }
 
