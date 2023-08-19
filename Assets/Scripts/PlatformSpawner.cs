@@ -6,24 +6,22 @@ public class PlatformSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] platformPrefabs;
     [SerializeField] private ColorCheck colorCheck;
+    [SerializeField] private Vector3 spawnPoint = new (0f, 0f, 1.4f);
+    [SerializeField] private float spawnPointIncrement = 1.4f; 
 
     private bool isCorrectPlatformSpawned;
-    private Vector3 spawnPoint = new (0f, 0f, 1.5f);          
-    private float spawnInterval = 0.5f;       
-    private float timer = 0f;
+         
+
+    private void Start() {
+        
+    }
 
     private void Update()
     {
-        timer += Time.deltaTime;
-        if (timer >= spawnInterval)
-        {
-            SpawnPlatform();
-            spawnPoint += new Vector3(0f, 0f, 1.5f);
-            timer = 0f; 
-        }
+        
     }
 
-    private void SpawnPlatform()
+    public void SpawnPlatform()
     {
         //Spawns platforms alternatively
         if(!isCorrectPlatformSpawned)
@@ -41,9 +39,10 @@ public class PlatformSpawner : MonoBehaviour
         {
             child.gameObject.layer = 6;
         }
+        spawnPoint += new Vector3(0f, 0f, spawnPointIncrement);
     }
 
-    public int RandomExcept(int min, int max, int except)
+    private int RandomExcept(int min, int max, int except)
     {
         int random = Random.Range(min, max);
         if (random == except) random = (random + 1) % max;
