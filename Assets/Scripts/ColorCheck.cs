@@ -41,7 +41,10 @@ public class ColorCheck : MonoBehaviour
                 OnColorMismatch?.Invoke();
             }
         }
+    }
 
+    private void OnTriggerEnter(Collider other) 
+    {
         platformSpawner.SpawnPlatform();
         platformSpawner.SpawnPlatform();
     }
