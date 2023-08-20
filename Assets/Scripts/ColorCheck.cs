@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColorCheck : MonoBehaviour
 {
     [SerializeField] private Material[] colorMaterials; 
-    [SerializeField]private MeshRenderer playerRenderer;
+    [SerializeField] private MeshRenderer playerRenderer;
     [SerializeField] private PlatformSpawner platformSpawner;
 
     public float colorChangeInterval = 5f;
