@@ -27,12 +27,12 @@ public class PlatformSpawner : MonoBehaviour
         //Spawns platforms alternatively
         if(!isCorrectPlatformSpawned)
         {
-            Instantiate(platformPrefabs[colorCheck.currentColorIndex], spawnPoint, Quaternion.identity, transform);
+            Instantiate(platformPrefabs[colorCheck.currentColorIndex], spawnPoint, transform.rotation, transform);
             isCorrectPlatformSpawned = true;
         }
         else
         {
-            Instantiate(platformPrefabs[RandomExcept(0, platformPrefabs.Length, colorCheck.currentColorIndex)], spawnPoint, Quaternion.identity, transform);
+            Instantiate(platformPrefabs[RandomExcept(0, platformPrefabs.Length, colorCheck.currentColorIndex)], spawnPoint, transform.rotation, transform);
             isCorrectPlatformSpawned = false;
         }
 
