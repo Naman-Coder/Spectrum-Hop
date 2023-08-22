@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private float distToGround;
 
+    public delegate void OutOfBounds();
+    public static event OutOfBounds OnOutOfBounds;
+    public delegate void TriggerPlatform();
+    public static event TriggerPlatform OnTriggerPlatform;
+
     void Start ()
     {
         remainingJumps = maxJumps;
@@ -24,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() 
     {
        ForwardMovement();
+       
     }
 
     private void Update() {
@@ -48,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        if ((isGrounded || remainingJumps > 0) && Input.GetButtonDown("Jump"))
+        if ((remainingJumps > 0) && Input.GetButtonDown("Jump"))
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); // Reset vertical velocity
             
@@ -60,11 +66,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.gameObject.layer == 6)
+            OnTriggerPlatform?.Invoke();
+    
+        if(other.CompareTag("Bounds")) 
+            OnOutOfBounds?.Invoke(); // Trigger game over screen
+    }
 }
-
-
-
-
-
-
 
