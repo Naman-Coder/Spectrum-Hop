@@ -42,16 +42,5 @@ public class ColorCheck : MonoBehaviour
             }
         }
     }
-
-    private void OnTriggerEnter(Collider other) 
-    {
-            platformSpawner.SpawnPlatform();
-            platformSpawner.SpawnPlatform();
-
-
-        if(other.CompareTag("Bounds")) 
-        {
-            OnColorMismatch?.Invoke(); // Trigger game over screen
-        }
-    }
+    
 }
