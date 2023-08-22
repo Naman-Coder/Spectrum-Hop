@@ -11,10 +11,20 @@ public class PlatformSpawner : MonoBehaviour
 
     private bool isCorrectPlatformSpawned;
          
+    private void OnEnable()
+    {
+        PlayerController.OnTriggerPlatform += SpawnPlatform;
+    }
+
+    private void OnDisable()
+    {
+        PlayerController.OnTriggerPlatform -= SpawnPlatform;
+    }
 
     private void Start() 
     {
-        
+        SpawnPlatform();
+        SpawnPlatform();
     }
 
     private void Update()
@@ -49,4 +59,6 @@ public class PlatformSpawner : MonoBehaviour
         if (random == except) random = (random + 1) % max;
         return random;
     }
+
+    
 }
