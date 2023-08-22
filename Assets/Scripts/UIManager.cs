@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
         ColorCheck.OnColorMismatch += ShowGameOver;
         Countdown.OnGameStarted += ShowNextColorCounter;
         Countdown.OnGameStarted += ShowScore;
+        PlayerController.OnOutOfBounds += ShowGameOver;
     }
 
     private void OnDisable() 
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
         ColorCheck.OnColorMismatch -= ShowGameOver;
         Countdown.OnGameStarted -= ShowNextColorCounter;
         Countdown.OnGameStarted -= ShowScore;
+        PlayerController.OnOutOfBounds -= ShowGameOver;
     }
 
     private void ShowGameOver()
