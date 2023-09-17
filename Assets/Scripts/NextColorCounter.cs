@@ -6,6 +6,7 @@ using TMPro;
 public class NextColorCounter : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI nextColorCounterText;
+    [SerializeField] private ColorCheck colorCheck;
 
     private float counter = 5f;
 
@@ -16,7 +17,12 @@ public class NextColorCounter : MonoBehaviour
         {
             counter = 5f;
         }
-        nextColorCounterText.text = string.Format("Next color in: {0:0.#}", counter);
+        if(colorCheck.currentColorIndex == 0)
+            nextColorCounterText.text = $"NEXT COLOR IN: <color=#00FF00>{counter:F2}</color>";
+        else if(colorCheck.currentColorIndex == 1)
+            nextColorCounterText.text = $"NEXT COLOR IN: <color=#0000FF>{counter:F2}</color>";
+        else if(colorCheck.currentColorIndex == 2)
+            nextColorCounterText.text = $"NEXT COLOR IN: <color=#FF0000>{counter:F2}</color>";
     }
 
 }
