@@ -12,6 +12,6 @@ public class Score : MonoBehaviour
     private void Update() 
     {
         counter += Time.deltaTime;
-        scoreText.text = string.Format("Score: {0:0.}", counter);
+        scoreText.text = string.Format("SCORE: {0:0.}", counter);
     }
 }
