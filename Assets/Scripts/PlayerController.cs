@@ -39,8 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private void ForwardMovement() 
     {
-        Vector3 forwardMovement = transform.forward * speed * Time.deltaTime;
-        rb.MovePosition(rb.position + forwardMovement);
+        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, speed * Time.deltaTime);
     }
     
     private void GroundCheck()
