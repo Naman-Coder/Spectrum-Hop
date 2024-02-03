@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -11,7 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 3f;
     [SerializeField] private int maxJumps = 1; // Max jumps excluding initial jump
 
-    private int remainingJumps;
+    public int remainingJumps;
     private bool isGrounded;
     private float distToGround;
 

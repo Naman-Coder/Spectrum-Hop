@@ -5,6 +5,7 @@ using TMPro;
 
 public class Countdown : MonoBehaviour
 {
+    
     public TextMeshProUGUI countdownText;
     public float countdownDuration = 3.0f;          
 
@@ -13,7 +14,6 @@ public class Countdown : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 0;
         StartCoroutine(StartCountdown());
     }
 

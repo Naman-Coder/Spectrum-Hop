@@ -20,10 +20,10 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 0;
         Instance = this;
     }
 
-    // Update is called once per frame
     void Update()
     {
         ResetGame();
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     private void ResetGame() 
     {
-        if( gameOver && Input.GetKeyDown(KeyCode.Return))
+        if(gameOver && Input.GetKeyDown(KeyCode.Return))
             SceneManager.LoadScene("SampleScene");
     }
 

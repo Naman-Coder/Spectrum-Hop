@@ -7,6 +7,8 @@ public class ColorCheck : MonoBehaviour
     [SerializeField] private Material[] colorMaterials; 
     [SerializeField] private MeshRenderer playerRenderer;
     [SerializeField] private PlatformSpawner platformSpawner;
+    
+    private AudioSource collisionClip;
 
     public float colorChangeInterval = 5f;
     public int currentColorIndex = 0;
@@ -15,6 +17,7 @@ public class ColorCheck : MonoBehaviour
 
     private void Start()
     {
+        collisionClip = GetComponent<AudioSource>();
         currentColorIndex = Random.Range(0, colorMaterials.Length);
         playerRenderer.material = colorMaterials[currentColorIndex]; // Apply a random color when game starts
         StartCoroutine(ColorChangeCoroutine()); 
@@ -31,10 +34,11 @@ public class ColorCheck : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other) // Spawns platform on collision with platform
+    private void OnCollisionEnter(Collision other) 
     {
         if(other.gameObject.layer == 6) 
         {
+            collisionClip.Play(); // Play sound on collision
             Renderer platformRenderer = other.gameObject.GetComponent<MeshRenderer>();
             if(platformRenderer.sharedMaterial != playerRenderer.sharedMaterial) 
             {
